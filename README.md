@@ -1,3 +1,6 @@
+## What is this
+auto world generation from seeds text file for finding seeds.
+
 ## Settings
 - filepath: seeds text file path
 - delays: please adjust according to you
