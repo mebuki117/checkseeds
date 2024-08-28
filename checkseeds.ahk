@@ -1,24 +1,36 @@
 #NoEnv
 #SingleInstance force
 
-; Settings
-global filepath := "C:\Users\PC_User\Downloads\test\message.txt"
+; File Settings
+global filepath := "D:\AutoHotKey\minecraft\checkseeds\seeds.txt"  ; default seeds text file path
+global maxgb := 1  ; max gigabyte to read
 
-global keydelay := 60
+; Delay Settings
+global keydelay := 70
 global worldgenkeydelay := 500
 global seedinputdelay := 50
 global worldquitkeydelay := 300
 
+; Hotkey Settings
+global Resethotkey := "*U"
+global ResetinMainMenuhotkey := "*I"
 
-; Don't Change
+
+; Do Not Edit
 global seed := ""
+global var := ""
+maxgb = floor(maxgb*1024)
 SetKeyDelay, %keydelay%
+
+Menu, Tray, Add
+Menu, Tray, Add, SeedsFileSelect, SeedsFileSelect
 
 GetSeeds() {
   FileReadLine, seed, %filepath%, 1
 }
 
 WorldGen() {
+  GetSeeds()
   ControlSend,, {Blind}{Space}{Tab 3}{Space}
   Sleep, %worldgenkeydelay%
   ControlSend,, {Blind}{Tab}{Space 2}{Tab 5}{Right}{Tab 2}
@@ -30,7 +42,6 @@ WorldGen() {
 
 WorldGenFromMainMenu() {
   ControlSend,, {Blind}{Tab}
-  GetSeeds()
   WorldGen()
 }
 
@@ -43,13 +54,12 @@ WorldQuit() {
 ResetGen() {
   WorldQuit()
   Sleep, %worldquitkeydelay%
-  GetSeeds()
   WorldGen()
 }
 
 DeleteLine() {
   FileReadLine, seed, %filepath%, 1
-  FileRead, var, %filepath%
+  FileRead, var, *Mmaxbyte %filepath%
   StringReplace, var, var, %seed%
   if !var
     MsgBox, All lines loaded!
@@ -60,7 +70,13 @@ DeleteLine() {
   }
 }
 
-; Hotkeys
+SeedsFileSelect() {
+  dummy := filepath
+  FileSelectFile, filepath, 1,, Select Seeds File
+  if !filepath
+    filepath := dummy
+}
+
 #If WinActive("Minecraft") && (WinActive("ahk_exe javaw.exe") || WinActive("ahk_exe java.exe"))
-  *U:: ResetGen()
-  *I:: WorldGenFromMainMenu()
+  Hotkey, %Resethotkey%, ResetGen
+  Hotkey, %ResetinMainMenuhotkey%, WorldGenFromMainMenu
