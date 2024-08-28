@@ -4,6 +4,8 @@ auto world generation from seeds text file for finding seeds.
 ## Settings
 - filepath: seeds text file path
 - delays: please adjust according to you
+- hotkeys
+- and more
 
 ## Seeds Text Format
 1 line 1 seed.  
