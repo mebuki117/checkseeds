@@ -1,5 +1,5 @@
 ## What is this
-auto world generation from seeds text file for finding seeds.
+auto world generation from seeds text file for finding seeds. for 1.20+
 
 ## Settings
 - filepath: seeds text file path
