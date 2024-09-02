@@ -1,11 +1,11 @@
 ## What is this
-auto world generation from seeds text file for finding seeds. for 1.20+
+auto world generation from seeds text file for finding seeds. for 1.16+
 
 ## Settings
-- filepath: seeds text file path
-- delays: please adjust according to you
-- hotkeys
-- and more
+- world: world gen screen type and more
+- file: seeds text file path
+- delay: please adjust according to you (millsec)
+- hotkey
 
 ## Seeds Text Format
 1 line 1 seed.  
