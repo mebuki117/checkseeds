@@ -2,10 +2,10 @@
 #SingleInstance force
 
 ; World Settings
-global version := "1.19.4"  ; default world gen screen type. selectable: 1.16, 1.19.4
+global version := "1.16"  ; default world gen screen type. selectable: 1.16, 1.19.4
 global gamemode := 1  ; 0=survival, 1=creative, 2=hardcore
 global difficulty := 2  ; 0=peaceful, 1=easy, 2=normal, 3=hard
-global atum := 1  ; 0=not used, 1=bottom right/center, 2=replace s&q
+global fastreset := 1  ; 0=not used, 1=bottom right/center, 2=replace s&q
 
 ; File Settings
 global filepath := "D:\downloads\AutoHotKey\minecraft\checkseeds\seeds.txt"  ; default seeds text file path
@@ -93,7 +93,7 @@ WorldGenFromMainMenu() {
 
 WorldQuit() {
   SetKeyDelay, 0
-  if (atum == 1)
+  if (fastreset == 1)
     ControlSend,, {Blind}{ESC}{Tab 9}{Space}
   else
     ControlSend,, {Blind}{ESC}{Tab 8}{Space}
